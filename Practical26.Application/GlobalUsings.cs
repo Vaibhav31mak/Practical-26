@@ -1,0 +1,9 @@
+global using AutoMapper;
+global using FluentValidation;
+global using MediatR;
+global using Practical25.Domain.Entities;
+global using Practical25.Domain.Enums;
+global using Practical25.Infrastructure.UnitOfWork;
+global using Practical26.Application.DTOs;
+global using Practical26.Application.Features.Employees.Commands;
+global using Practical26.Application.Features.Employees.Queries;
