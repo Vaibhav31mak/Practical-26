@@ -8,15 +8,16 @@ namespace Practical26.Application.Mappings
         /// </summary>
         public EmployeeProfile()
         {
-            CreateMap<Employee, EmployeeResponse>();
+            CreateMap<Employee, EmployeeResponseModel>();
+            CreateMap<Employee, EmployeeListModel>();
 
-            CreateMap<CreateEmployeeCommand, Employee>()
+            CreateMap<CreateEmployeeModel, Employee>()
                 .ForMember(destination => destination.JoiningDate,
                 options => options.MapFrom(_ => DateTime.UtcNow))
                 .ForMember(destination => destination.Status,
                 options => options.MapFrom(_ => true));
 
-            CreateMap<UpdateEmployeeCommand, Employee>();
+            CreateMap<UpdateEmployeeModel, Employee>();
         }
     }
 }

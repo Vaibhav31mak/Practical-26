@@ -14,8 +14,9 @@ builder.Services.AddValidatorsFromAssemblyContaining<CreateEmployeeHandler>();
 
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(ICommandRepository<>), typeof(CommandRepository<>));
+builder.Services.AddScoped(typeof(IQueryRepository<>), typeof(QueryRepository<>));
+builder.Services.AddScoped<ICommandUnitOfWork, CommandUnitOfWork>();
 builder.Services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<EmployeeProfile>());

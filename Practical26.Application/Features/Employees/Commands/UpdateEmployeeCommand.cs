@@ -7,6 +7,6 @@
         int DepartmentId,
         string EmailId,
         bool Status
-    ) : IRequest<int>;
+    ) : UpdateEmployeeModel(Name, Salary, DepartmentId, EmailId), IRequest<int>;
 
 }

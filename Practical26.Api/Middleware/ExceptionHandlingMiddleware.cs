@@ -1,9 +1,3 @@
-using FluentValidation;
-using Practical25.Application.Exceptions;
-using Practical25.Application.Exceptions;
-using System.Net;
-using System.Threading.Tasks;
-
 namespace Practical26.Api.Middleware
 {
     public sealed class ExceptionHandlingMiddleware(RequestDelegate next)

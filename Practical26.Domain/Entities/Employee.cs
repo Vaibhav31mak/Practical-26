@@ -1,13 +1,13 @@
 namespace Practical26.Domain.Entities
 {
-    public sealed class Employee
+    public sealed class Employee : IStatus
     {
         public int Id { get; set; }
         public required string Name { get; set; }
         public decimal Salary { get; set; }
         public int DepartmentId { get; set; }
         public required string EmailId { get; set; }
-        public DateTime JoiningDate { get; set; }
-        public bool Status { get; set; }
+        public DateTime JoiningDate { get; set; } = DateTime.UtcNow;
+        public bool Status { get; set; } = true;
     }
 }

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Practical25.Domain\Practical25.Domain.csproj" />
-    <ProjectReference Include="..\Practical25.Infrastructure\Practical25.Infrastructure.csproj" />
+    <ProjectReference Include="..\Practical26.Domain\Practical26.Domain.csproj" />
+    <ProjectReference Include="..\Practical26.Infrastructure\Practical26.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
