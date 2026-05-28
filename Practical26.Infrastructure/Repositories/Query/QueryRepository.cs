@@ -15,9 +15,9 @@ public sealed class QueryRepository<T>(ApplicationDbContext context)
     public async Task<T?> GetByIdAsync(int id)
     {
         var entity = await _dbSet.FindAsync(id);
-        if(entity is null)
+        if (entity is null)
             return null;
-        if(entity is IStatus statusEntity && !statusEntity.Status)
+        if (entity is IStatus statusEntity && !statusEntity.Status)
             return null;
         return entity;
     }
