@@ -1,25 +1,20 @@
 ﻿namespace Practical26.Application.Features.Employees.Handlers
 {
-    public class DeleteEmployeeHandler(IUnitOfWork unitOfWork)
+    // Handler for soft deleting an employee.
+    public class DeleteEmployeeHandler(ICommandUnitOfWork unitOfWork)
         : IRequestHandler<DeleteEmployeeCommand, bool>
     {
-        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly ICommandUnitOfWork _unitOfWork = unitOfWork;
         /// <summary>
         /// Handles the request to delete an employee.
         /// </summary>
         public async Task<bool> Handle(DeleteEmployeeCommand request
             , CancellationToken cancellationToken)
         {
-            var employee = await _unitOfWork.Employees.GetByIdAsync(request.Id, cancellationToken);
-            if (employee == null)
-            {
-                return false;
-            }
+            _unitOfWork.Employees.Delete(request.Id);
+            var affectedRows = await _unitOfWork.SaveChangesAsync();
 
-            _unitOfWork.Employees.Remove(employee);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
-
-            return true;
+            return affectedRows > 0;
         }
     }
 }

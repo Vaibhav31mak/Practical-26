@@ -5,5 +5,5 @@
         decimal Salary,
         int DepartmentId,
         string EmailId
-    ) : IRequest<int>;
+    ) : CreateEmployeeModel(Name, Salary, DepartmentId, EmailId), IRequest<int>;
 }

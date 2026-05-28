@@ -1,20 +1,20 @@
 ﻿namespace Practical26.Application.Features.Employees.Handlers
 {
-    public class GetAllEmployeesHandler(IUnitOfWork unitOfWork, IMapper mapper)
-        : IRequestHandler<GetAllEmployeesQuery, IReadOnlyList<EmployeeResponse>>
+    public class GetAllEmployeesHandler(IQueryRepository<Employee> queryRepository, IMapper mapper)
+        : IRequestHandler<GetAllEmployeesQuery, IReadOnlyList<EmployeeListModel>>
     {
-        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly IQueryRepository<Employee> _queryRepository = queryRepository;
         private readonly IMapper _mapper = mapper;
 
         /// <summary>
         /// Handles the request to retrieve all employees.
         /// </summary>
-        public async Task<IReadOnlyList<EmployeeResponse>> Handle(GetAllEmployeesQuery request
-            , CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<EmployeeListModel>> Handle(GetAllEmployeesQuery request,
+            CancellationToken cancellationToken)
         {
-            var employees = await _unitOfWork.Employees.GetAllAsync(cancellationToken);
+            var employees = await _queryRepository.GetAllAsync();
 
-            return _mapper.Map<IReadOnlyList<EmployeeResponse>>(employees);
+            return _mapper.Map<IReadOnlyList<EmployeeListModel>>(employees);
         }
     }
 }

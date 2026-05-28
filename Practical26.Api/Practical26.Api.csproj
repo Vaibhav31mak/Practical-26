@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Practical25.Application\Practical25.Application.csproj" />
-    <ProjectReference Include="..\Practical25.Infrastructure\Practical25.Infrastructure.csproj" />
+    <ProjectReference Include="..\Practical26.Application\Practical26.Application.csproj" />
+    <ProjectReference Include="..\Practical26.Infrastructure\Practical26.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

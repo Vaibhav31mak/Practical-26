@@ -1,9 +1,9 @@
 ﻿namespace Practical26.Application.Features.Employees.Handlers
 {
-    public class CreateEmployeeHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public class CreateEmployeeHandler(ICommandUnitOfWork unitOfWork, IMapper mapper)
         : IRequestHandler<CreateEmployeeCommand, int>
     {
-        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly ICommandUnitOfWork _unitOfWork = unitOfWork;
         private readonly IMapper _mapper = mapper;
         /// <summary>
         /// Handles the employee creation request.
@@ -13,8 +13,8 @@
         {
             var employee = _mapper.Map<Employee>(request);
 
-            await _unitOfWork.Employees.AddAsync(employee, cancellationToken);
-            await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.Employees.AddAsync(employee);
+            await _unitOfWork.SaveChangesAsync();
 
             return employee.Id;
         }
